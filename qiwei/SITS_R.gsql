@@ -195,7 +195,7 @@ T0 = {GNode.*}; //start from all vertices in the graph
 					e.M_P_TLPF += @@pf_cor[e.M_id-1]
 					// log(true, @@pf_cor[e.M_id-1], e.M_P_TLPF, e.M_id)
 				when (e.reverse == 0) then
-					e.M_P_TLPF += @@pf_cor[e.M_id-1]
+					e.M_P_TLPF += @@pf_cor[e.M_id+edgeList_size/2-1]
 				END
 			post-accum
 				s.M_P += @@inj_cor[s.exId-1],

@@ -20,7 +20,7 @@ typedef tuple <index1 int(8), value1 double> sort_id
 //create vertex GNode (primary_id cid string, exId uint, flag uint, GenP double, GenQ double, LdP double, LdQ double, G double, B double, Vm double, Va double, Ri_V double, Ri_vP double, Ri_vQ double) with stats="OUTDEGREE_BY_EDGETYPE"
 //the voltage, Vm, and angle, Va, here are state variables, not measurements
 
-create vertex GNode (primary_id cid string, exId int, flag uint, M_P double, M_Q double, G double, B double, Vm double, Va double, P double, M_Vm double, M_Va double, Ri_V double, Ri_vP double, Ri_vQ double, busname string, M_id int) with stats="OUTDEGREE_BY_EDGETYPE"
+create vertex GNode (primary_id cid string, exId int, flag uint, M_P double, M_Q double, G double, B double, Vm double, Va double, P double, M_Vm double, M_Va double, Ri_V double, Ri_vP double, Ri_vQ double, busname string) with stats="OUTDEGREE_BY_EDGETYPE"
 //the voltage, Vm, and angle, Va, here are state variables, not measurements
 
 create directed edge connected (from GNode, to GNode, G double, B double, hB double, K double, Kcount int, BIJ double, M_P_TLPF double, M_Q_TLPF double, neighbors int, deltaP double, deltaQ double, Ri_eP double, Ri_eQ double, reverse int, M_id int)

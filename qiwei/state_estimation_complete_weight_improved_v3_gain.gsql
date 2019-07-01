@@ -361,7 +361,7 @@ for graph state_estimation{
 		@@GainQ[s.exId-1] += s.@Giq,
 		@@GainQ_p[s.exId-1] += s.@Giq.size(),   // get the number of each row's nonzero elements, like ap for CSR
 		@@nnz_GainQ += s.@Giq.size(),
-		log(false, s.exId, s.@Gip, s.@Giq);	
+		// log(false, s.exId, s.@Gip, s.@Giq);	
 
 
  // ************************************** Sorting GainP & GainQ and Factorize *********************************************
@@ -372,8 +372,9 @@ for graph state_estimation{
  //print @@GainP > outputfile;
  //print @@GainQ > outputfile;
  
-	
+	print "50000";
 }
 
 install query state_estimation_weight_gain
-install query -OPTIMIZE
+//install query -OPTIMIZE
+//install query -OPTIMIZE
