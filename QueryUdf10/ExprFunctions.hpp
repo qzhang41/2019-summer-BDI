@@ -386,9 +386,7 @@ free(ap);
 
 
 
-// **********************************************************************************************************************************
-//Created by Qiwei
-//2019 summer intern 
+
 inline double cal_SR(ListAccum<ListAccum<double>> R_c, ListAccum<ListAccum<double>> R_i, ArrayAccum<SumAccum<double>> &cor_residual, int m_c)
 {
 	
@@ -404,6 +402,7 @@ double threshhold = 3;
 		for(int j=0;j<m_c;j++)
 		{
 			S_N_all[i][j] = lx[i*m_c+j];
+			// std::cout << "S_N_all ob: "<< S_N_all[i][j]<< std::endl;	
 		}
 	}
 //cal error	
@@ -742,48 +741,6 @@ double threshhold = 3;
 
 	return 1;
 }
-// **********************************************************************************************************************************
-//Created by Qiwei
-//2019 summer intern 
-// perform matrix multiplication
-inline double matrix_KH_cal (int m_c , int n_b,ArrayAccum<SumAccum<double>>K_all, ArrayAccum<SumAccum<double>>H_t_all, ArrayAccum<SumAccum<double>>& S_all)
-{
-	vector<vector<double>> K_all_2;
-	vector<vector<double>> H_t_all_2;
-	vector<vector<double>> S_all_2;
-	K_all_2.resize(n_b, vector<double>(m_c, 0));
-	H_t_all_2.resize(n_b, vector<double>(m_c, 0));
-	S_all_2.resize(m_c, vector<double>(m_c, 0));
-	double inte_s = 0;
-	// for(int i=0;i<n_b;i++)
-	// {
-		// for(int j=0;j<m_c;j++)
-		// {
-			// K_all_2[i][j] = K_all.data_[i*(m_c)+j];
-			// H_t_all_2[i][j] = H_t_all.data_[i*(m_c)+j];
-		// }
-	// }
-	for(int i=0;i<m_c;i++)
-	{
-		for(int j=0;j<m_c;j++)
-		{
-			inte_s = 0;
-			std::cout<<"inte_s"<<std::endl;
-			for(int k = 0; k<n_b;k++)
-			{	
-				// inte_s = inte_s + K_all_2[k][j]*H_t_all_2[k][i];
-				inte_s = inte_s + K_all.data_[k*(m_c)+j]*H_t_all.data_[k*(m_c)+i];
-			}
-			if(i == j)
-			{
-				S_all.data_[i*m_c+j] = 1 - inte_s;
-			}else{
-				S_all.data_[i*m_c+j] = (-1) * inte_s;
-			}
-		}
-	}
-}
-
 //**********************************************************************************************************************************
 // Created by: Chen Yuan, chen.yuan@geirina.net
 // Date: 08/01/2017
@@ -2290,6 +2247,26 @@ inline double SE_getVa (uint64_t& index, const ArrayAccum<SumAccum<double>> &gVa
 inline double SE_getVm (uint64_t& index, const ArrayAccum<SumAccum<double>> &gVm) {
   return gVm.data_[index];
 } 
+// **********************************************************************************************************************************
+// Created by: Qiwei
+// store the static sensitivity matrix and get the matrix at the SITS_R query
+// inline double store_S_1 (const ArrayAccum<SumAccum<double>> S_N, double m_c) {
+	// S_N_all.resize(m_c, vector<double>(m_c, 0));
+	// for (int i = 0; i < m_c; i++)
+	// {
+		// for(int j = 0; j < m_c; j++)
+		// {
+			// S_N_all[i][j] = S_N.data_[i*m_c + j];
+		// }
+	// }
+			// std::cout << "S_N_all1"<<S_N_all[1][2]<< std::endl;
+  // return 1;
+// }
+// inline double get_S_1 () {
+  // std::cout << "S_N_all" << S_N_all[1][1] << std::endl;
+  // return 1;
+// } 		
+
 		
 #endif /* EXPRFUNCTIONS_HPP_ */
 

@@ -31,7 +31,7 @@ ListAccum<edge> @@edgeList;
 			accum 
 				@@edgeList+=e
 	;
-	log(true, @@edgeList.size());
+	// log(true, @@edgeList.size());
 	MNodeSet = {MNode.*};	
 	MNodeSet = select s
 	  from MNodeSet:s
@@ -88,7 +88,6 @@ ListAccum<edge> @@edgeList;
 		end;
 	end;
 	print @@visit;
-	log(true, @@visit);
 	foreach i in range[1, @@visit.size()] do
 	    iter = 0;
 		con_Tx_s =0;

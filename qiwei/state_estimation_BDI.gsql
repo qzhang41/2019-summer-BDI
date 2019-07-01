@@ -247,20 +247,19 @@ log(true,"11111111111111111111111111");
 	END;
 log(true,"12222222222222222222222222");
 //*********************S******************
-matrix_KH_cal(m_c, n_b-1,@@K_all, @@H_t_all, @@S_all);
-	// foreach i in range[1, float_to_int(m_c)] do
-		// foreach j in range[1, float_to_int(m_c)] do
-			// @@inte_s = 0;
-			// foreach k in range[1, float_to_int(n_b)-1] do
-				// @@inte_s += @@K_all[k-1][j-1]*@@H_t_all[k-1][i-1];
-			// END;
-			// case when (i-1 == j-1) then
-				// @@S_all[i-1][j-1] = 1 - @@inte_s;
-			// else 
-				// @@S_all[i-1][j-1] = (-1) * @@inte_s;
-			// end;
-		// END;
-	// END;
+	foreach i in range[1, float_to_int(m_c)] do
+		foreach j in range[1, float_to_int(m_c)] do
+			@@inte_s = 0;
+			foreach k in range[1, float_to_int(n_b)-1] do
+				@@inte_s += @@K_all[k-1][j-1]*@@H_t_all[k-1][i-1];
+			END;
+			case when (i-1 == j-1) then
+				@@S_all[i-1][j-1] = 1 - @@inte_s;
+			else 
+				@@S_all[i-1][j-1] = (-1) * @@inte_s;
+			end;
+		END;
+	END;
 log(true,"2222.5");
 	foreach i in range[1, float_to_int(m_c)] do
 		foreach j in range[1, float_to_int(m_c)] do
